@@ -27,9 +27,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ people: [], isPending: true, error: true });
 					});
 			},
-			addFavorites: character => {
+			addFavorite: character => {
 				const store = getStore();
 				setStore({ favorites: store.favorites.concat(character.name) });
+				if (store.favorites.length > 0) {
+					console.log(store.favorites);
+				} else {
+					console.log("Favorites not set");
+				}
+			},
+			deleteFavorite: index => {
+				const store = getStore();
+				let newFavorites = store.favorites.filter((_, favIndex) => favIndex !== index);
+				setStore({ favorites: newFavorites });
 				if (store.favorites.length > 0) {
 					console.log(store.favorites);
 				} else {

@@ -20,7 +20,7 @@ const CharacterCard = ({ character }) => {
 						<button className="btn btn-primary">Learn more!</button>
 					</Link>
 					<div>
-						<button className="btn btn-outline-warning" onClick={() => actions.addFavorites(character)}>
+						<button className="btn btn-outline-warning" onClick={() => actions.addFavorite(character)}>
 							<i className="far fa-heart" />
 						</button>
 					</div>

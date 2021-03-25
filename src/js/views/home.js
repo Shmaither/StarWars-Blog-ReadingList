@@ -11,7 +11,6 @@ export const Home = () => {
 			{!store.isPending ? (
 				<div>
 					<div>
-						<Navbar />
 						<CharacterList />
 					</div>
 					<hr />

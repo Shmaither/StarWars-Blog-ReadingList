@@ -34,7 +34,9 @@ export const Navbar = () => {
 													className="list-group-item d-flex justify-content-between p-2"
 													key={listIndex}>
 													{task}
-													<span className="ml-4" onClick={() => deleteTask(listIndex)}>
+													<span
+														className="ml-4"
+														onClick={() => actions.deleteFavorite(listIndex)}>
 														<i className="fas fa-times" />
 													</span>
 												</li>
