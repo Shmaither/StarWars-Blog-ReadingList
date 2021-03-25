@@ -7,10 +7,15 @@ const CharacterList = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="card-deck">
-			{store.people.map((character, index) => {
-				return <CharacterCard key={index} character={character} />;
-			})}
+		<div>
+			<div className="container-fluid py-2">
+				<h2 className="font-weight-light">Characters</h2>
+				<div className="d-flex flex-row flex-nowrap">
+					{store.people.map((character, index) => {
+						return <CharacterCard key={index} character={character} />;
+					})}
+				</div>
+			</div>
 		</div>
 	);
 };

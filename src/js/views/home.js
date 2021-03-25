@@ -9,8 +9,10 @@ export const Home = () => {
 		<div>
 			{!store.isPending ? (
 				<div>
-					<h2>Data loaded {console.log(store.people)}</h2>
-					<CharacterList />
+					<div>
+						<CharacterList />
+					</div>
+					<hr />
 				</div>
 			) : (
 				<h2>Loading. . .</h2>

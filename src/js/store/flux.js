@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
+			favorites: [],
 			isPending: true,
 			error: null
 		},
@@ -28,6 +29,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setIsPending(false);
 					});
 			},
+			addFavorites: character => {
+				const store = getStore();
+				setStore({ favorites: store.favorites.concat(character.name) });
+				if (store.favorites.length > 0) {
+					console.log(store.favorites);
+				} else {
+					console.log("Favorites not set");
+				}
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
