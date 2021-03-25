@@ -13,7 +13,7 @@ const CharacterList = () => {
 				<h2 className="my-4 title">Characters</h2>
 				<div className="card-group card-group-scroll">
 					{store.people.map((character, index) => {
-						return <CharacterCard key={index} character={character} />;
+						return <CharacterCard key={index} character={character} id={index} />;
 					})}
 				</div>
 			</div>

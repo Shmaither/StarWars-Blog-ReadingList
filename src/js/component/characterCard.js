@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { PropTypes } from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const CharacterCard = ({ character }) => {
+const CharacterCard = ({ character, id }) => {
 	const { store, actions } = useContext(Context);
-	const { id } = useParams();
 
 	return (
 		<div className="card mr-3 mb-3">
@@ -36,7 +35,8 @@ CharacterCard.propTypes = {
 		gender: PropTypes.string,
 		hair_color: PropTypes.string,
 		eye_color: PropTypes.string
-	})
+	}),
+	id: PropTypes.number
 };
 
 export default CharacterCard;
