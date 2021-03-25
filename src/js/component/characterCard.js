@@ -8,20 +8,22 @@ const CharacterCard = ({ character }) => {
 	const { id } = useParams();
 
 	return (
-		<div className="card">
+		<div className="card mr-3 mb-3">
 			<img src="http://www.fpoimg.com/400x200?width=400&height=200" className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{character.name}</h5>
 				<p className="card-text">{character.gender}</p>
 				<p className="card-text"> {character.hair_color} </p>
 				<p className="card-text"> {character.eye_color} </p>
-				<div>
-					{/* <Link to={"/people/" + id }>
+				<div className="d-flex justify-content-between">
+					<Link to={"/people/" + id}>
 						<button className="btn btn-primary">Learn more!</button>
-					</Link> */}
-					<span onClick={() => actions.addFavorites(character)}>
-						<i className="far fa-heart" />
-					</span>
+					</Link>
+					<div>
+						<button className="btn btn-outline-warning" onClick={() => actions.addFavorites(character)}>
+							<i className="far fa-heart" />
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

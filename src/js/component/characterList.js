@@ -8,10 +8,10 @@ const CharacterList = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container">
-			<h2 className="font-weight-light">Characters</h2>
-			<div className="card-group card-group-scroll">
-				<div className="d-flex flex-row flex-nowrap">
+		<div>
+			<div className="container px-0">
+				<h2 className="my-4 title">Characters</h2>
+				<div className="card-group card-group-scroll">
 					{store.people.map((character, index) => {
 						return <CharacterCard key={index} character={character} />;
 					})}

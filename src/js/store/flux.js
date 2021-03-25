@@ -25,8 +25,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => {
 						console.error(err.message);
 						setStore({ people: [], isPending: true, error: true });
-						setError(true);
-						setIsPending(false);
 					});
 			},
 			addFavorites: character => {
