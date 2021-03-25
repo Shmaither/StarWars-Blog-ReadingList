@@ -8,7 +8,7 @@ const CharacterCard = ({ character }) => {
 	const { id } = useParams();
 
 	return (
-		<div className="card w-50">
+		<div className="card">
 			<img src="http://www.fpoimg.com/400x200?width=400&height=200" className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{character.name}</h5>
