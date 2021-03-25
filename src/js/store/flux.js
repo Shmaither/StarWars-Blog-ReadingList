@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			getPeople: () => {
-				fetch("https://www.swapi.tech/api/people/")
+				fetch("https://swapi.dev/api/people/")
 					.then(res => {
 						if (!res.ok) {
 							// the "the throw Error will send the erro to the "catch"
