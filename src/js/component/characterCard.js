@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const CharacterCard = ({ character, id }) => {
 	const { store, actions } = useContext(Context);
-	let favoriteFlag = store.favorites.includes(character.name);
+	let favoriteFlag = store.favorites.includes(character);
 
 	return (
 		<div className="card mr-3 mb-3">

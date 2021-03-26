@@ -47,24 +47,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ planets: [], isPending: true, error: true });
 					});
 			},
-			addFavorite: character => {
+			addFavorite: item => {
 				const store = getStore();
-				setStore({ favorites: store.favorites.concat(character.name) });
-				if (store.favorites.length > 0) {
-					console.log(store.favorites);
-				} else {
-					console.log("Favorites not set");
-				}
+				setStore({ favorites: store.favorites.concat(item) });
 			},
 			deleteFavorite: index => {
 				const store = getStore();
 				let newFavorites = store.favorites.filter((_, favIndex) => favIndex !== index);
 				setStore({ favorites: newFavorites });
-				if (store.favorites.length > 0) {
-					console.log(store.favorites);
-				} else {
-					console.log("Favorites not set");
-				}
 			}
 		}
 	};

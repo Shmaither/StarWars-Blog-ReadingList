@@ -28,12 +28,12 @@ export const Navbar = () => {
 									{store.favorites.length === 0 ? (
 										<small className="text-muted pl-2">(empty)</small>
 									) : (
-										store.favorites.map((task, listIndex) => {
+										store.favorites.map((favorite, listIndex) => {
 											return (
 												<li
 													className="list-group-item d-flex justify-content-between p-2"
 													key={listIndex}>
-													{task}
+													{favorite.name}
 													<span
 														className="ml-4"
 														onClick={() => actions.deleteFavorite(listIndex)}>
