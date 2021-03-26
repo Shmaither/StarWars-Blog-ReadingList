@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
+import "../../styles/details.scss";
 
 const PlanetDetail = () => {
 	const { store, actions } = useContext(Context);
@@ -32,7 +33,7 @@ const PlanetDetail = () => {
 			</div>
 			<hr />
 
-			<div className="row">
+			<div className="row bottom">
 				<div className="col-lg-2 text-center">
 					<h5>Name</h5>
 					<p>{store.planets[id].name}</p>

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import CharacterCard from "./characterCard.js";
-import { PropTypes } from "prop-types";
 import "../../styles/home.scss";
 
 const CharacterList = () => {

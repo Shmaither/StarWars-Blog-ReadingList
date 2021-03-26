@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
+import "../../styles/details.scss";
 
 const CharacterDetail = () => {
 	const { store, actions } = useContext(Context);
@@ -32,7 +33,7 @@ const CharacterDetail = () => {
 			</div>
 			<hr />
 
-			<div className="row">
+			<div className="row bottom">
 				<div className="col-lg-2 text-center">
 					<h5>Name</h5>
 					<p>{store.people[id].name}</p>
@@ -54,8 +55,8 @@ const CharacterDetail = () => {
 					<p>{store.people[id].birth_year}</p>
 				</div>
 				<div className="col-lg-2 text-center">
-					<h5>Homeworld</h5>
-					<p>{store.people[id].homeworld}</p>
+					<h5>Mass</h5>
+					<p>{store.people[id].mass}</p>
 				</div>
 			</div>
 		</div>

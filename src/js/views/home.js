@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import CharacterList from "../component/characterList.js";
-import { Navbar } from "../component/navbar.js";
 import PlanetsList from "../component/planetsList";
 
 export const Home = () => {
