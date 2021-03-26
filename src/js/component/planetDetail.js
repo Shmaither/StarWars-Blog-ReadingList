@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-const CharacterDetail = () => {
+const PlanetDetail = () => {
 	const { store, actions } = useContext(Context);
 	const { id } = useParams();
 	return (
@@ -16,7 +16,7 @@ const CharacterDetail = () => {
 					/>
 				</div>
 				<div className="col-6">
-					<h2>{store.people[id].name}</h2>
+					<h2>{store.planets[id].name}</h2>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non tellus id quam placerat
 						facilisis sed eget nulla. Mauris aliquet ac leo porta rhoncus. Integer condimentum leo sit amet
@@ -35,31 +35,31 @@ const CharacterDetail = () => {
 			<div className="row">
 				<div className="col-lg-2 text-center">
 					<h5>Name</h5>
-					<p>{store.people[id].name}</p>
+					<p>{store.planets[id].name}</p>
 				</div>
 				<div className="col-lg-2 text-center">
-					<h5>Gender</h5>
-					<p>{store.people[id].gender}</p>
+					<h5>Population</h5>
+					<p>{store.planets[id].population}</p>
 				</div>
 				<div className="col-lg-2 text-center">
-					<h5>Hair Color</h5>
-					<p>{store.people[id].hair_color}</p>
+					<h5>Terrain</h5>
+					<p>{store.planets[id].terrain}</p>
 				</div>
 				<div className="col-lg-2 text-center">
-					<h5>Eyes Color</h5>
-					<p>{store.people[id].eye_color}</p>
+					<h5>Climates</h5>
+					<p>{store.planets[id].climate}</p>
 				</div>
 				<div className="col-lg-2 text-center">
-					<h5>Birth Year</h5>
-					<p>{store.people[id].birth_year}</p>
+					<h5>Diameter</h5>
+					<p>{store.planets[id].diameter}</p>
 				</div>
 				<div className="col-lg-2 text-center">
-					<h5>Homeworld</h5>
-					<p>{store.people[id].homeworld}</p>
+					<h5>Orbital Period</h5>
+					<p>{store.planets[id].orbital_period}</p>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default CharacterDetail;
+export default PlanetDetail;

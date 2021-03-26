@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
+			planets: [],
 			favorites: [],
 			isPending: true,
 			error: null
@@ -25,6 +26,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => {
 						console.error(err.message);
 						setStore({ people: [], isPending: true, error: true });
+					});
+			},
+			getPlanets: () => {
+				fetch("https://swapi.dev/api/planets/")
+					.then(res => {
+						if (!res.ok) {
+							// the "the throw Error will send the erro to the "catch"
+							throw Error("Could not fetch the data for that resource");
+						}
+						return res.json();
+					})
+					.then(data => {
+						// Restore the state for the error once the data is fetched.
+						// Once you receive the data change the state of isPending and the message vanish
+						setStore({ planets: data.results, isPending: false, error: null });
+					})
+					.catch(err => {
+						console.error(err.message);
+						setStore({ planets: [], isPending: true, error: true });
 					});
 			},
 			addFavorite: character => {
