@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: null,
 			people: [],
 			planets: [],
 			favorites: [],
@@ -9,6 +10,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			syncTokenFromSessionStore: () => {
+				const token = sessionStorage.getItem("token");
+				console.log("Application jus loaded, synching the session storage token");
+				if (token && token != "" && token != undefined) setStore({ token: token });
+			},
+
+			login: async (email, password) => {
+				const opts = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				};
+
+				try {
+					// Await for the fetch
+					const resp = await fetch("https://3000-blush-sawfish-wg2imjgz.ws-us03.gitpod.io/token", opts);
+					if (resp.status !== 200) {
+						alert("There has been some error");
+						return false;
+					}
+
+					// Await for the response
+					const data = await resp.json();
+					console.log("This came from the backend", data);
+					// Setting into the persistent storage
+					sessionStorage.setItem("token", data.access_token);
+					setStore({ token: data.access_token });
+					return true;
+				} catch {
+					console.error("There has been an error login in");
+				}
+			},
+
 			getPeople: () => {
 				fetch("https://swapi.dev/api/people/")
 					.then(res => {
