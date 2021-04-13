@@ -56,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getPeople: () => {
-				fetch("https://swapi.dev/api/people/")
+				fetch("https://3000-blush-sawfish-wg2imjgz.ws-us03.gitpod.io/characters")
 					.then(res => {
 						if (!res.ok) {
 							// the "the throw Error will send the erro to the "catch"
@@ -67,7 +67,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						// Restore the state for the error once the data is fetched.
 						// Once you receive the data change the state of isPending and the message vanish
-						setStore({ people: data.results, isPending: false, error: null });
+						console.log("This came from API, CHARACTERS: ", data);
+						setStore({ people: data, isPending: false, error: null });
 					})
 					.catch(err => {
 						console.error(err.message);
@@ -75,7 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPlanets: () => {
-				fetch("https://swapi.dev/api/planets/")
+				fetch("https://3000-blush-sawfish-wg2imjgz.ws-us03.gitpod.io/planets")
 					.then(res => {
 						if (!res.ok) {
 							// the "the throw Error will send the erro to the "catch"
@@ -86,7 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						// Restore the state for the error once the data is fetched.
 						// Once you receive the data change the state of isPending and the message vanish
-						setStore({ planets: data.results, isPending: false, error: null });
+						setStore({ planets: data, isPending: false, error: null });
 					})
 					.catch(err => {
 						console.error(err.message);
