@@ -16,6 +16,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (token && token != "" && token != undefined) setStore({ token: token });
 			},
 
+			logout: () => {
+				sessionStorage.removeItem("token");
+				console.log("Loging out");
+				setStore({ token: null });
+			},
+
 			login: async (email, password) => {
 				const opts = {
 					method: "POST",
@@ -40,8 +46,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json();
 					console.log("This came from the backend", data);
 					// Setting into the persistent storage
-					sessionStorage.setItem("token", data.access_token);
-					setStore({ token: data.access_token });
+					sessionStorage.setItem("token", data);
+					//console.log(sessionStorage.getItem("token"));
+					setStore({ token: data });
 					return true;
 				} catch {
 					console.error("There has been an error login in");

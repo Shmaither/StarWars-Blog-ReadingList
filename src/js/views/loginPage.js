@@ -9,8 +9,10 @@ const Login = () => {
 	const history = useHistory();
 
 	const handleClick = () => {
+		if (email == "" || password == "" || email == undefined || password == undefined)
+			alert("Bad email or password");
+		else actions.login(email, password);
 		// Pass login parameters to make a fetch to the back end.
-		actions.login(email, password);
 	};
 
 	// Every time it finds a token into the storage it will redirect to /home page
@@ -19,26 +21,23 @@ const Login = () => {
 	return (
 		<div className="text-center">
 			<h1>Login</h1>
-			{store.token && store.token != "" && store.token != undefined ? (
-				"You are logged in with: " + store.token
-			) : (
-				<div>
-					<div className="mb-3">
-						<input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
-					</div>
-					<div className="mb-3">
-						<input
-							type="password"
-							placeholder="password"
-							value={password}
-							onChange={e => setPassword(e.target.value)}
-						/>
-					</div>
-					<button type="submit" className="btn btn-primary" onClick={handleClick}>
-						Submit
-					</button>
+
+			<div>
+				<div className="mb-3">
+					<input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
 				</div>
-			)}
+				<div className="mb-3">
+					<input
+						type="password"
+						placeholder="password"
+						value={password}
+						onChange={e => setPassword(e.target.value)}
+					/>
+				</div>
+				<button type="submit" className="btn btn-primary" onClick={handleClick}>
+					Submit
+				</button>
+			</div>
 		</div>
 	);
 };
