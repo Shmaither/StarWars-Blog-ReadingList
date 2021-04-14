@@ -16,10 +16,10 @@ const Login = () => {
 	};
 
 	// Every time it finds a token into the storage it will redirect to /home page
-	if (store.token && store.token != "" && store.token != undefined) history.push("/");
+	if (store.token && store.token != "" && store.token != undefined) history.push("/home");
 
 	return (
-		<div className="text-center">
+		<div className="text-center mt-5">
 			<h1>Login</h1>
 
 			<div>

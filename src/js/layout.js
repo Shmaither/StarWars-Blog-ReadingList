@@ -24,10 +24,10 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/login">
 							<LoginPage />
+						</Route>
+						<Route exact path="/home">
+							<Home />
 						</Route>
 						<Route exact path="/people/:id">
 							<CharacterDetail />

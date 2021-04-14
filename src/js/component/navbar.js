@@ -15,13 +15,13 @@ export const Navbar = () => {
 			) : (
 				<div>
 					<div className="mr-75">
-						<Link to="/">
+						<Link to="/home">
 							<span className="navbar-brand mb-0 h1">StarWars</span>
 						</Link>
 					</div>
 					<div>
 						<div>
-							<Link to="/login">
+							<Link to="/">
 								<button onClick={() => actions.logout()} className="btn btn-primary mr-2">
 									Log out
 								</button>

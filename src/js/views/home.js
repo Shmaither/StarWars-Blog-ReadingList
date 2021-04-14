@@ -6,7 +6,6 @@ import FavoriteList from "../component/favoriteList";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
 	return (
 		<div>
 			{!store.isPending ? (

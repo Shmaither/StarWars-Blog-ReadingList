@@ -6,10 +6,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			favorites: [],
 			isPending: true,
-			error: null
+			error: null,
+			url: "https://3000-pink-alpaca-gwk8o5kp.ws-us03.gitpod.io"
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
 			syncTokenFromSessionStore: () => {
 				const token = sessionStorage.getItem("token");
 				console.log("Application jus loaded, synching the session storage token");
@@ -33,10 +33,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: password
 					})
 				};
+				const store = getStore();
 
 				try {
 					// Await for the fetch
-					const resp = await fetch("https://3000-blush-sawfish-wg2imjgz.ws-us03.gitpod.io/token", opts);
+
+					const resp = await fetch(`${store.url}/token`, opts);
 					if (resp.status !== 200) {
 						alert("There has been some error");
 						return false;
@@ -56,7 +58,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getPeople: () => {
-				fetch("https://3000-blush-sawfish-wg2imjgz.ws-us03.gitpod.io/characters")
+				const store = getStore();
+				fetch(`${store.url}/characters`)
 					.then(res => {
 						if (!res.ok) {
 							// the "the throw Error will send the erro to the "catch"
@@ -76,7 +79,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPlanets: () => {
-				fetch("https://3000-blush-sawfish-wg2imjgz.ws-us03.gitpod.io/planets")
+				const store = getStore();
+				fetch(`${store.url}/planets`)
 					.then(res => {
 						if (!res.ok) {
 							// the "the throw Error will send the erro to the "catch"
@@ -87,6 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						// Restore the state for the error once the data is fetched.
 						// Once you receive the data change the state of isPending and the message vanish
+						console.log("This came from API, PLANETS: ", data);
 						setStore({ planets: data, isPending: false, error: null });
 					})
 					.catch(err => {
