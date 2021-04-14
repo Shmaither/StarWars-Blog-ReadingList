@@ -170,7 +170,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// Once you receive the data change the state of isPending and the message vanish
 						console.log("This came from API, add FAVORITE: ", data);
 
-						setStore({ favorites: store.favorites.concat(item) });
+						getActions().getFavorites();
 					})
 					.catch(err => {
 						console.error(err.message);
