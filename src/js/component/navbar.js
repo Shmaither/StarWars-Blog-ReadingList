@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const history = useHistory();
-
-	//if (!store.token) history.push("/login");
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">

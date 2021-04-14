@@ -1,3 +1,6 @@
+import jwt_decode from "jwt-decode";
+// $ npm install jwt-decode
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -11,9 +14,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			syncTokenFromSessionStore: () => {
+				const store = getStore();
 				const token = sessionStorage.getItem("token");
 				console.log("Application jus loaded, synching the session storage token");
 				if (token && token != "" && token != undefined) setStore({ token: token });
+				console.log("current token on SYNC: ", store.token);
 			},
 
 			logout: () => {
@@ -99,9 +104,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ planets: [], isPending: true, error: true });
 					});
 			},
-			addFavorite: item => {
+			getFavorites: () => {
 				const store = getStore();
-				setStore({ favorites: store.favorites.concat(item) });
+				const opts = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					}
+				};
+				console.log("current token on GET FAV: ", store.token);
+
+				fetch(`${store.url}/favorites`, opts)
+					.then(res => {
+						if (!res.ok) {
+							// the "the throw Error will send the erro to the "catch"
+							throw Error("Could not fetch the data for FAVORITES RESOURSE");
+						}
+						return res.json();
+					})
+					.then(data => {
+						// Restore the state for the error once the data is fetched.
+						// Once you receive the data change the state of isPending and the message vanish
+						console.log("This came from API, FAVORITES: ", data);
+						setStore({ favorites: data });
+					})
+					.catch(err => {
+						console.error(err.message);
+						setStore({ favorites: [] });
+					});
 			},
 			deleteFavorite: index => {
 				const store = getStore();

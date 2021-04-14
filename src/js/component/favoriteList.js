@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import CharacterCard from "./characterCard.js";
 import PlanetCard from "./planetCard.js";
@@ -6,6 +6,10 @@ import "../../styles/home.scss";
 
 const FavoriteList = () => {
 	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.getFavorites();
+	}, []);
+
 	let favoritesLength = store.favorites.length;
 
 	return (
