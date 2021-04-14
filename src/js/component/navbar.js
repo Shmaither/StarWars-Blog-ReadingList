@@ -50,7 +50,7 @@ export const Navbar = () => {
 																{favorite.name}
 																<span
 																	className="ml-4"
-																	onClick={() => actions.deleteFavorite(listIndex)}>
+																	onClick={() => actions.deleteFavorite(favorite.id)}>
 																	<i className="fas fa-times" />
 																</span>
 															</li>

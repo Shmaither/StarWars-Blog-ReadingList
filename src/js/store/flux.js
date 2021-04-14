@@ -178,10 +178,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			deleteFavorite: index => {
+			deleteFavorite: fav_id => {
 				const store = getStore();
-				let newFavorites = store.favorites.filter((_, favIndex) => favIndex !== index);
-				setStore({ favorites: newFavorites });
+				let newFavorites = store.favorites.filter(fav => fav.id !== fav_id);
+
+				const opts = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				};
+				console.log("FAVORITE ITEM ID: ", fav_id);
+				fetch(`${store.url}/favorites/${fav_id}`, opts)
+					.then(res => {
+						if (!res.ok) {
+							// the "the throw Error will send the erro to the "catch"
+							throw Error("Could not fetch the data for DELETE RESOURSE");
+						}
+						console.log("Succesfull https code DELETING favorite", res);
+						return res.json();
+					})
+					.then(data => {
+						// Restore the state for the error once the data is fetched.
+						// Once you receive the data change the state of isPending and the message vanish
+						console.log("This came from API, DELETE FAVORITE: ", data);
+
+						setStore({ favorites: newFavorites });
+					})
+					.catch(err => {
+						console.error(err.message);
+						setStore({ favorites: [] });
+					});
 			}
 		}
 	};
