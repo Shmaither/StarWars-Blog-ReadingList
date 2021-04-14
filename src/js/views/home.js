@@ -7,6 +7,8 @@ import FavoriteList from "../component/favoriteList";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(() => {
+		actions.getPeople();
+		actions.getPlanets();
 		actions.getFavorites();
 	}, []);
 	return (

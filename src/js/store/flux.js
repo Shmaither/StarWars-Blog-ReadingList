@@ -10,8 +10,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			isPending: true,
 			error: null,
-			url: "https://3000-pink-alpaca-gwk8o5kp.ws-us03.gitpod.io"
+			url: "https://3000-maroon-warbler-stittrxx.ws-us03.gitpod.io"
 		},
+		// Replace the "url" inside store every time you start de back end from zero.
 		actions: {
 			syncTokenFromSessionStore: () => {
 				const store = getStore();
@@ -114,7 +115,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						Authorization: "Bearer " + store.token
 					}
 				};
-				console.log("current token on GET FAV: ", store.token);
 
 				fetch(`${store.url}/favorites`, opts)
 					.then(res => {
@@ -202,8 +202,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// Restore the state for the error once the data is fetched.
 						// Once you receive the data change the state of isPending and the message vanish
 						console.log("This came from API, DELETE FAVORITE: ", data);
-
-						setStore({ favorites: newFavorites });
+						getActions().getFavorites();
+						// setStore({ favorites: newFavorites });
 					})
 					.catch(err => {
 						console.error(err.message);
