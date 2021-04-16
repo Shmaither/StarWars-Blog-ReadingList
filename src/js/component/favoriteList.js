@@ -6,9 +6,6 @@ import "../../styles/home.scss";
 
 const FavoriteList = () => {
 	const { store, actions } = useContext(Context);
-	// useEffect(() => {
-	// 	actions.getFavorites();
-	// }, []);
 
 	let favoritesLength = store.favorites.length;
 

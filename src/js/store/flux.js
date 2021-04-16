@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			isPending: true,
 			error: null,
-			url: "https://3000-maroon-warbler-stittrxx.ws-us03.gitpod.io"
+			url: "https://3000-cyan-takin-96iv8igr.ws-us03.gitpod.io"
 		},
 		// Replace the "url" inside store every time you start de back end from zero.
 		actions: {
@@ -106,13 +106,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			getFavorites: () => {
+			getFavorites: async () => {
 				const store = getStore();
+				const token = sessionStorage.getItem("token");
+				console.log("Token inside favorites", token);
 				const opts = {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: "Bearer " + store.token
+						Authorization: "Bearer " + token
 					}
 				};
 

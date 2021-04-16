@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
