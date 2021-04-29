@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const PlanetCard = ({ planet, id }) => {
 	const { store, actions } = useContext(Context);
 	let favoriteFlag = store.favorites.includes(planet);
+
 	return (
 		<div className="card mr-3 mb-3">
 			<img src="http://www.fpoimg.com/400x200?width=400&height=200" className="card-img-top" alt="..." />
