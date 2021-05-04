@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			isPending: true,
 			error: null,
-			url: "https://3000-silver-squid-9g70k2p5.ws-us03.gitpod.io"
+			url: "https://3000-amber-eagle-3gy65w33.ws-us03.gitpod.io"
 		},
 		// Replace the "url" inside store every time you start de back end from zero.
 		actions: {

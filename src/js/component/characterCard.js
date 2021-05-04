@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 
 const CharacterCard = ({ character, id }) => {
 	const { store, actions } = useContext(Context);
-	let favoriteFlag = store.favorites.includes(character);
+
+	let favoriteNameArray = store.favorites.map(obj => obj.id); // turn favorites object into name array because includes method only works with arrays
+	let isFavorite = favoriteNameArray.includes(character.id);
 
 	return (
 		<div className="card mr-3 mb-3">
@@ -21,7 +23,7 @@ const CharacterCard = ({ character, id }) => {
 					</Link>
 					<div>
 						<button className="btn btn-outline-warning" onClick={() => actions.addFavorite(character)}>
-							<i className={favoriteFlag ? "fas fa-heart" : "far fa-heart"} />
+							<i className={isFavorite ? "fas fa-heart" : "far fa-heart"} />
 						</button>
 					</div>
 				</div>
