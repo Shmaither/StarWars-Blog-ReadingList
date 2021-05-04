@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			error: null,
 			url: "https://3000-amber-eagle-3gy65w33.ws-us03.gitpod.io"
 		},
-		// Replace the "url" inside store every time you start de back end from zero.
+		// Replace the "url" variable inside store with the one in the back every time you start it from zero.
 		actions: {
 			syncTokenFromSessionStore: () => {
 				const store = getStore();
